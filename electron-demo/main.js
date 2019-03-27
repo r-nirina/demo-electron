@@ -8,6 +8,7 @@ app.on("ready", function() {
         frame: false,
         show: false,
         fullscreenable: false,
+        icon: "app-icon.png"
         // backgroundColor: "#2e2c29"
     })
     

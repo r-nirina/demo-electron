@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { VueLoaderPlugin } = require("vue-loader")
 
 module.exports = {
+    target: "electron-renderer",
     entry: "./src/index.js",
     output: {
         filename: "main.js",
@@ -58,7 +59,8 @@ module.exports = {
     plugins: [
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
-            template: "src/index.html"
+            template: "src/index.html",
+            favicon: "src/assets/favicon/favicon.ico"
         })
     ],
 }

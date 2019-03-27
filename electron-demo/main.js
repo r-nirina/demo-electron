@@ -1,11 +1,24 @@
 const electron = require("electron")
 const { app, BrowserWindow } = electron
 
+let win
+
 app.on("ready", function() {
-    let win = new BrowserWindow({
-        width:    800,
-        height:   600
+    win = new BrowserWindow({
+        frame: false,
+        show: false,
+        fullscreenable: false,
+        // backgroundColor: "#2e2c29"
+    })
+    
+    win.loadFile("public/index.html")
+
+    win.once("ready-to-show", function() {
+        win.show()
+        win.maximize()
     })
 
-    win.loadFile("public/index.html")
+    if (process.env.NODE_ENV !== "production") {
+        require("vue-devtools").install()
+    }
 })

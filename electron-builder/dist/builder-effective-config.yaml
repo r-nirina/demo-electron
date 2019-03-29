@@ -1,0 +1,5 @@
+directories:
+  output: dist
+  buildResources: build
+appId: fr.univ-lyon1.electron
+electronVersion: 3.1.8

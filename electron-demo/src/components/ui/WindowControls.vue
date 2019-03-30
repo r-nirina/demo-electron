@@ -1,15 +1,15 @@
 <template>
 <div class="window-controls">
-    <div class="window-control window-control-minimize">
+    <div class="window-control window-control-minimize" @click="minimizeWindow">
         <font-awesome-icon icon="window-minimize" />
     </div>
-    <div class="window-control window-control-restore">
+    <div class="window-control window-control-restore" @click="restoreWindow">
         <font-awesome-icon icon="window-restore" />
     </div>
-    <div class="window-control window-control-maximize">
+    <div class="window-control window-control-maximize" @click="maximizeWindow">
         <font-awesome-icon icon="window-maximize" />
     </div>
-    <div class="window-control window-control-close" @click="closeAppWindow">
+    <div class="window-control window-control-close" @click="closeWindow">
         <font-awesome-icon icon="window-close" />
     </div>
 </div>
@@ -35,13 +35,18 @@ import { mapActions } from "vuex"
 export default {
     name: "WindowControls",
 
+
+
     components: {
         "font-awesome-icon": FontAwesomeIcon
     },
 
     methods: {
         ...mapActions({
-            "closeAppWindow": "electron/closeAppWindow"
+            "closeWindow": "electron/closeWindow",
+            "minimizeWindow": "electron/minimizeWindow",
+            "maximizeWindow": "electron/maximizeWindow",
+            "restoreWindow": "electron/restoreWindow",
         })
     }
 }

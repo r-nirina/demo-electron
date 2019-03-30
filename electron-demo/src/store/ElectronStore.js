@@ -3,25 +3,25 @@ import { remote } from "electron"
 const getInitialState = () => ({})
 
 export default {
-    namespaced: true,
+	namespaced: true,
 
-    state: getInitialState(),
+	state: getInitialState(),
 
-    actions: {
-        closeWindow() {
-            remote.getCurrentWindow().close()
-        },
+	actions: {
+		closeWindow() {
+			remote.getCurrentWindow().close()
+		},
 
-        minimizeWindow() {
-            remote.getCurrentWindow().minimize()
-        },
+		minimizeWindow() {
+			remote.getCurrentWindow().minimize()
+		},
 
-        maximizeWindow() {
-            remote.getCurrentWindow().maximize()
-        },
+		maximizeWindow() {
+			remote.getCurrentWindow().maximize()
+		},
 
-        restoreWindow() {
-            remote.getCurrentWindow().restore()
-        }
-    }
+		restoreWindow() {
+			remote.getCurrentWindow().restore()
+		}
+	}
 }

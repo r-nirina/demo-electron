@@ -1,17 +1,20 @@
 <template>
 <div class="app">
     <title-bar></title-bar>
+    <chrono-view></chrono-view>
 </div>
 </template>
 
 <script>
 import Vue from "vue"
 import TitleBar from "./components/ui/TitleBar.vue"
+import ChronoView from "./components/views/ChronoView.vue"
 
 export default {
     name: "App",
     components: {
-        "title-bar": TitleBar
+        "title-bar": TitleBar,
+        "chrono-view": ChronoView
     },
 
     data: () => ({}),

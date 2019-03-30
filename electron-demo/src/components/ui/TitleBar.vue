@@ -4,7 +4,7 @@
         <img class="title-icon" src="../../assets/favicon/todo-cloud.png">
         <h1 class="title-label">A faire</h1>
     </div>
-    <window-controls />
+    <WindowControls />
 </div>
 </template>
 
@@ -14,12 +14,12 @@ import WindowControls from "./WindowControls.vue"
 export default {
     name: "TitleBar",
     components: {
-        "window-controls": WindowControls
+        WindowControls
     }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .title-bar {
     width:              100vw;
     height:             32px;

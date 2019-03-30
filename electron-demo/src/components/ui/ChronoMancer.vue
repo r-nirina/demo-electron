@@ -12,6 +12,10 @@
 			<div class="cell">
 				<div class="numbers second">{{ second }}</div>
 			</div>
+			<span>.</span>
+			<div class="cell">
+				<div class="numbers millisecond">{{ millisecond }}</div>
+			</div>
 		</div>
 		
 		<div class="controls">
@@ -32,7 +36,8 @@ export default {
 		...mapState({
 			hour: state => state.chrono.hour,
 			minute: state => state.chrono.minute,
-			second: state => state.chrono.second
+			second: state => state.chrono.second,
+			millisecond: state => state.chrono.millisecond
 		})
 	},
 	
@@ -46,6 +51,6 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 </style>

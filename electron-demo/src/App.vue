@@ -1,7 +1,7 @@
 <template>
 <div class="app">
-    <title-bar></title-bar>
-    <chrono-view></chrono-view>
+    <TitleBar />
+    <ChronoView />
 </div>
 </template>
 
@@ -13,8 +13,8 @@ import ChronoView from "./components/views/ChronoView.vue"
 export default {
     name: "App",
     components: {
-        "title-bar": TitleBar,
-        "chrono-view": ChronoView
+        TitleBar,
+        ChronoView
     },
 
     data: () => ({}),

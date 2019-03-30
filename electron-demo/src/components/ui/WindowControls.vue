@@ -1,16 +1,16 @@
 <template>
 <div class="window-controls">
     <div class="window-control window-control-minimize" @click="minimizeWindow">
-        <font-awesome-icon icon="window-minimize" />
+        <FontAwesomeIcon icon="window-minimize" />
     </div>
     <div class="window-control window-control-restore" @click="restoreWindow">
-        <font-awesome-icon icon="window-restore" />
+        <FontAwesomeIcon icon="window-restore" />
     </div>
     <div class="window-control window-control-maximize" @click="maximizeWindow">
-        <font-awesome-icon icon="window-maximize" />
+        <FontAwesomeIcon icon="window-maximize" />
     </div>
     <div class="window-control window-control-close" @click="closeWindow">
-        <font-awesome-icon icon="window-close" />
+        <FontAwesomeIcon icon="window-close" />
     </div>
 </div>
 </template>
@@ -38,7 +38,7 @@ export default {
 
 
     components: {
-        "font-awesome-icon": FontAwesomeIcon
+        FontAwesomeIcon
     },
 
     methods: {
@@ -52,7 +52,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .window-controls {
     -webkit-app-region:   no-drag;
     color:                #ffffff;

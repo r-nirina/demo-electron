@@ -3,13 +3,18 @@ const getInitialState = () => ({
 	minute: 0,
 	second: 0,
 	millisecond: 0,
-	intervalID: null
+	intervalID: null,
+	rounds: []
 })
 
 export default {
 	namespaced: true,
 	
 	state: getInitialState(),
+
+	getters: {
+		isRunning: state => state.intervalID !== null
+	},
 	
 	mutations: {
 		incrementHour(state) {
@@ -50,6 +55,15 @@ export default {
 
 		resetIntervalID(state) {
 			state.intervalID = null
+		},
+
+		snapRound(state) {
+			const { hour, minute, second, millisecond } = state
+			state.rounds.push({ hour, minute, second, millisecond })
+		},
+
+		resetRounds(state) {
+			state.rounds = []
 		}
 	},
 	
@@ -88,6 +102,7 @@ export default {
 			context.commit("resetHour")
 			context.commit("resetMillisecond")
 			context.dispatch("stop")
+			context.commit("resetRounds")
 		}
 	}
 }

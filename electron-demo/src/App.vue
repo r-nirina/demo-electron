@@ -24,24 +24,29 @@ export default {
 </script>
 
 <style lang="scss">
-@import url("./assets/fonts/Raleway/Raleway.css");
+@import url("./assets/fonts/Raleway/Raleway.scss");
+@import url("./assets/fonts/MajorMonoDisplay/MajorMonoDisplay.scss");
+@import url("./assets/fonts/Ubuntu/Ubuntu.scss");
+@import url("./assets/fonts/UbuntuMono/UbuntuMono.scss");
 
 body {
-    height:               100vh;
-    width:                100vw;
-    display:              flex;
-    flex-direction:       column;
-    justify-content:      center;
-    align-items:          center;
+    height:            100vh;
+    width:             100vw;
+    display:           flex;
+    flex-direction:    column;
+    justify-content:   center;
+    align-items:       center;
 }
 
 .app {
-    height:               100vh;
-    width:                100vw;
-    display:              flex;
-    flex-direction:       column;
-    justify-content:      flex-start;
-    align-items:          center;
+    height:             100vh;
+    width:              100vw;
+    display:            flex;
+    flex-direction:     column;
+    justify-content:    flex-start;
+    align-items:        center;
+    background-color:   rgb(26, 26, 26);
+    color:              #ffffff;
 }
 
 
@@ -50,7 +55,7 @@ body * {
     margin:        0;
     padding:       0;
     box-sizing:    border-box;
-    font-family:   'Raleway', sans-serif;
+    font-family:   'Ubuntu', 'Raleway', sans-serif;
     // font-size:     14px;
     // color:         #222222;
     outline:       none;

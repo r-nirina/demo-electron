@@ -23,8 +23,8 @@ export default {
 .title-bar {
     width:              100vw;
     height:             32px;
-    background-color:   rgb(49, 49, 49);
-    box-shadow:         0 1px 2px rgba(0, 0, 0, 0.2);
+    background-color:   rgb(26, 26, 26);
+    box-shadow:         0 4px 8px rgba(0, 0, 0, 0.2);
 
     display:           flex;
     flex-direction:    row;

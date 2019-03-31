@@ -59,7 +59,7 @@ export default {
 
 		snapRound(state) {
 			const { hour, minute, second, millisecond } = state
-			state.rounds.push({ hour, minute, second, millisecond })
+			state.rounds.unshift({ hour, minute, second, millisecond })
 		},
 
 		resetRounds(state) {

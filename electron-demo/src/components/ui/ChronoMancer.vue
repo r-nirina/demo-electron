@@ -27,19 +27,19 @@
 	<div class="controls">
 		<button
 			class="control reset" @click="snapRound">
-			<FontAwesomeIcon icon="stopwatch" />
+			<FontAwesomeIcon icon="stopwatch" size="2x" />
 		</button>
 		<button v-if="!isRunning"
 			class="control start" @click="start">
-			<FontAwesomeIcon icon="play" />
+			<FontAwesomeIcon icon="play" size="2x" />
 		</button>
 		<button v-else
 			class="control stop" @click="stop">
-			<FontAwesomeIcon icon="pause" />
+			<FontAwesomeIcon icon="pause" size="2x" />
 		</button>
 		<button
 			class="control reset" @click="reset">
-			<FontAwesomeIcon icon="sync" />
+			<FontAwesomeIcon icon="sync" size="2x" />
 		</button>
 	</div>
 </div>
@@ -84,26 +84,35 @@ export default {
 
 <style lang="scss" scoped>
 .chrono {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: stretch;
+	min-height:        500px;
+	display:           flex;
+	flex-direction:    column;
+	justify-content:   center;
+	align-items:       stretch;
+	box-shadow:        0 4px 8px rgba(0, 0, 0, 0.2);
+	background-image: linear-gradient(
+		to right,
+		rgb(26,26,26),
+		rgb(111, 46, 0) 25%,
+		rgb(111, 46, 0) 75%,
+		rgb(26,26,26)
+	);
 
 	.timer {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: stretch;
-		height: 96px;
+		display:           flex;
+		flex-direction:    row;
+		justify-content:   center;
+		align-items:       center;
+		padding:           75px 0;
 
 		* {
 			font-family: 'Major Mono Display', 'Courier New';
 		}
 
 		.cell {
-			font-size: 64px;
-			line-height: 1.5;
-			text-align: center;
+			font-size:     64px;
+			line-height:   1.5;
+			text-align:    center;
 
 			.numbers {
 				min-width: 100px;
@@ -115,30 +124,31 @@ export default {
 	}
 
 	.controls {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: center;
+		display:           flex;
+		flex-direction:    row;
+		justify-content:   center;
+		align-items:       center;
+		padding:           50px 0;
 
 		.control {
-			margin-left:          32px;
-			margin-right:         32px;
+			margin-left:          24px;
+			margin-right:         24px;
 			color:                #ffffff;
 			background-color:     rgb(26, 26, 26);
-			width:                48px;
-			height:               48px;
+			min-width:            64px;
+			min-height:           64px;
 			border:               none;
 			border-image-width:   0;
 			border-radius:        100%;
 			box-shadow:           0 4px 8px 0 rgba(0, 0, 0, 0.2),
 								  0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			cursor:               pointer;
-			transition:           background-color 80ms linear;
+			transition:           background-color 60ms linear;
 
 			&.start,
 			&.stop {
-				width:              64px;
-				height:             64px;
+				min-width:    96px;
+				min-height:   96px;
 
 				background-color:   rgb(254, 110, 66);
 				&:hover {

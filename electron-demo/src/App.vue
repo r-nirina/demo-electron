@@ -1,20 +1,18 @@
 <template>
 <div class="app">
     <TitleBar />
-    <ChronoView />
+    <router-view></router-view>
 </div>
 </template>
 
 <script>
 import Vue from "vue"
 import TitleBar from "./components/ui/TitleBar.vue"
-import ChronoView from "./components/views/ChronoView.vue"
 
 export default {
     name: "App",
     components: {
-        TitleBar,
-        ChronoView
+        TitleBar
     },
 
     data: () => ({}),
@@ -34,8 +32,9 @@ body {
     width:             100vw;
     display:           flex;
     flex-direction:    column;
-    justify-content:   center;
+    justify-content:   flex-start;
     align-items:       center;
+    overflow:          hidden;
 }
 
 .app {
@@ -47,6 +46,7 @@ body {
     align-items:        center;
     background-color:   rgb(26, 26, 26);
     color:              #ffffff;
+    overflow:           hidden;
 }
 
 
@@ -65,5 +65,31 @@ body * {
 ul,
 ol {
     list-style:   none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color:   rgb(26, 26, 26);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+  border: solid 6px rgb(26, 26, 26);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
 </style>

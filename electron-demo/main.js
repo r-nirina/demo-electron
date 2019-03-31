@@ -9,7 +9,9 @@ const createMainWindow = () => {
         frame: false,
         show: false,
         fullscreenable: false,
-        icon: "app-icon.png"
+        icon: "app-icon.png",
+        minWidth: 800,
+        minHeight: 600
         // backgroundColor: "#2e2c29"
     })
 

@@ -47,6 +47,7 @@
 
 <script>
 import { mapState, mapActions, mapGetters, mapMutations } from "vuex"
+import { display } from "../../assets/utils"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
 import {
@@ -75,9 +76,7 @@ export default {
 	methods: {
 		...mapMutations("chrono", [ "snapRound" ]),
 		...mapActions("chrono", [ "start", "stop", "reset" ]),
-		display(numbers) {
-			return `${numbers}`.padStart(2, "0").slice(0, 2)
-		}
+		display(numbers) { return display(numbers) }
 	}
 }
 </script>
@@ -93,8 +92,8 @@ export default {
 	background-image: linear-gradient(
 		to right,
 		rgb(26,26,26),
-		rgb(111, 46, 0) 25%,
-		rgb(111, 46, 0) 75%,
+		rgb(0, 94, 111) 25%,
+		rgb(0, 94, 111) 75%,
 		rgb(26,26,26)
 	);
 
@@ -150,9 +149,9 @@ export default {
 				min-width:    96px;
 				min-height:   96px;
 
-				background-color:   rgb(254, 110, 66);
+				background-color:   rgb(66, 210, 254);
 				&:hover {
-					background-color:   rgb(255, 162, 112);
+					background-color:   rgb(93, 179, 206);
 				}
 			}
 			&.reset {

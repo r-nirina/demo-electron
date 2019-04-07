@@ -2,7 +2,7 @@
 <div class="title-bar">
     <div class="title">
         <img class="title-icon" src="../../assets/favicon/todo-cloud.png">
-        <h1 class="title-label">A faire</h1>
+        <h1 class="title-label">{{ $route.name }}</h1>
     </div>
     <WindowControls />
 </div>

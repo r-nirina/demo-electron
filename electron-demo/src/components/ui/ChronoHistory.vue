@@ -14,6 +14,8 @@
 
 <script>
 import { mapState } from "vuex"
+import { display } from "../../assets/utils"
+
 export default {
     name: "ChronoHistory",
 
@@ -22,9 +24,7 @@ export default {
     },
 
     methods: {
-		display(numbers) {
-			return `${numbers}`.padStart(2, "0").slice(0, 2)
-		}
+		display(numbers) { return display(numbers) }
     }
 }
 </script>
@@ -39,11 +39,17 @@ export default {
         justify-content:   center;
         align-items:       center;
 
-        padding:     28px 0;
-        font-size:   20px;
+        padding:      28px 0;
+        font-size:    20px;
+        transition:   background-color 120ms linear;
 
         &:not(:first-child) {
             border-top: solid 1px rgb(59, 59, 59);
+        }
+
+        &:hover {
+            background-color: #292929;
+
         }
     }
 }

@@ -1,11 +1,14 @@
 <template>
-<div class="view">
-	<ChronoMancer />
-	<ChronoHistory />
-</div>
+<MainLayout>
+	<div class="view">
+		<ChronoMancer />
+		<ChronoHistory />
+	</div>
+</MainLayout>
 </template>
 
 <script>
+import MainLayout from "../layouts/MainLayout.vue"
 import ChronoMancer from "../ui/ChronoMancer.vue"
 import ChronoHistory from "../ui/ChronoHistory.vue"
 
@@ -13,6 +16,7 @@ export default {
 	name: "ChronoView",
 	
 	components: {
+		MainLayout,
 		ChronoMancer,
 		ChronoHistory
 	}

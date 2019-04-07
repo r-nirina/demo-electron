@@ -34,9 +34,6 @@ import { mapActions } from "vuex"
 
 export default {
     name: "WindowControls",
-
-
-
     components: {
         FontAwesomeIcon
     },

@@ -11,8 +11,8 @@ const createMainWindow = () => {
         fullscreenable: false,
         icon: "app-icon.png",
         minWidth: 800,
-        minHeight: 600
-        // backgroundColor: "#2e2c29"
+        minHeight: 600,
+        backgroundColor: "#1a1a1a"
     })
 
     // Chargement de la page

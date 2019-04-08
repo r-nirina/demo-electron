@@ -48,6 +48,11 @@ export default {
         font-weight:   normal;
     }
 
+    &:hover {
+        color:           #ffffff;
+        border-bottom:   solid 2px #ffffff;
+    }
+
     .active & {
         color:           rgb(0, 153, 180);
         border-bottom:   solid 2px rgb(0, 153, 180);

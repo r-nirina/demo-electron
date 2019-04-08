@@ -49,7 +49,6 @@ export default {
 
         &:hover {
             background-color: #292929;
-
         }
     }
 }

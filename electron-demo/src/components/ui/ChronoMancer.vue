@@ -23,7 +23,7 @@
 			<div class="numbers millisecond">{{ display(millisecond) }}</div>
 		</div>
 	</div>
-	
+
 	<div class="controls">
 		<button
 			class="control reset" @click="snapRound">
@@ -67,12 +67,12 @@ export default {
 	components: {
 		FontAwesomeIcon
 	},
-	
+
 	computed: {
 		...mapState("chrono", [ "hour", "minute", "second", "millisecond" ]),
 		...mapGetters("chrono", [ "isRunning" ])
 	},
-	
+
 	methods: {
 		...mapMutations("chrono", [ "snapRound" ]),
 		...mapActions("chrono", [ "start", "stop", "reset" ]),
@@ -83,7 +83,7 @@ export default {
 
 <style lang="scss" scoped>
 .chrono {
-	min-height:        500px;
+	min-height:        350px;
 	display:           flex;
 	flex-direction:    column;
 	justify-content:   center;
@@ -102,7 +102,7 @@ export default {
 		flex-direction:    row;
 		justify-content:   center;
 		align-items:       center;
-		padding:           75px 0;
+		padding:           50px 0;
 
 		* {
 			font-family: 'Major Mono Display', 'Courier New';
@@ -127,7 +127,7 @@ export default {
 		flex-direction:    row;
 		justify-content:   center;
 		align-items:       center;
-		padding:           50px 0;
+		padding:           25px 0;
 
 		.control {
 			margin-left:          24px;

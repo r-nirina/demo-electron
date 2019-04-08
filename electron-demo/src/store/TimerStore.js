@@ -7,18 +7,20 @@ const getInitialState = () => ({
 
 export default {
 	namespaced: true,
-	
+
 	state: getInitialState(),
 
 	getters: {},
-	
-	mutations: {
 
+	mutations: {
+		initTimer(state, _milliseconds) {
+
+		}
 	},
-	
+
 	actions: {
-		createTimer({ commit }, { _hour, _minute, _second }) {
-			const milliseconds = toMilliseconds({ _hour, _minute, _second })
+		createTimer({ commit }, { hour, minute, second }) {
+			const milliseconds = toMilliseconds({ hour, minute, second })
 			commit("initTimer", milliseconds)
 		}
 	}

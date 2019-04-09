@@ -1,4 +1,4 @@
-import { toMilliseconds, toTime } from "../assets/utils"
+import { toMilliseconds } from "../assets/utils"
 
 const getID = (id) => `id_${id}`
 
@@ -18,11 +18,14 @@ export default {
 		},
 		isFinished: (state) => (id) => {
 			const { initial, current } = state.timers[getID(id)]
-			return toMilliseconds(initial) < toMilliseconds(current)
+			return initial < current
 		},
 		progress: (state) => (id) => {
 			const { initial, current } = state.timers[getID(id)]
-			return toMilliseconds(current) / toMilliseconds(initial)
+			const ratio = current / initial
+			return (ratio < 1)
+				? ratio
+				: -1
 		},
 		timersArray: (state) => {
 			const arr = []
@@ -43,8 +46,7 @@ export default {
 		},
 
 		incrementTimer(state, _id) {
-			const milliseconds = toMilliseconds(state.timers[getID(_id)].current)
-			state.timers[getID(_id)].current = toTime(milliseconds + 100)
+			state.timers[getID(_id)].current = state.timers[getID(_id)].current + 100
 		},
 		
 		setIntervalID(state, { _id, _intervalID }) {
@@ -65,8 +67,8 @@ export default {
 			const id = state.nextID
 			const timer = {
 				id,
-				initial: { hour, minute, second },
-				current: { hour: 0, minute: 0, second: 0 },
+				initial: toMilliseconds({ hour, minute, second, millisecond: 0 }),
+				current: 0,
 				intervalID: null
 			}
 			commit("registerTimer", timer)
@@ -114,6 +116,25 @@ export default {
 			const message = {
 				type: "timer_finished",
 				data: state.timers[getID(_id)]
+			}
+			dispatch("electron/sendToMain", message, { root: true })
+		},
+
+		sendProgressState({ getters, dispatch }) {
+			const allProgress = getters.timersArray
+				.map(timer => {
+					const ratio = timer.current / timer.initial
+					return (ratio < 1) ? ratio : -1
+				})
+				.filter(progress => progress > 0)
+			const averageProgress = (allProgress.length > 0)
+				? allProgress.reduce((acc, x) => acc + x, 0) / allProgress.length
+				: -1
+			
+			// Barre de progression native
+			const message = {
+				type: "progress_update",
+				data: averageProgress
 			}
 			dispatch("electron/sendToMain", message, { root: true })
 		}

@@ -44,6 +44,11 @@ const listenToRendererProcesses = () => {
             body: "Le timer " + timer.id + " est arrivé au bout du décompte"
         }).show()
     })
+
+    // Barre de progression
+    ipcMain.on("progress_update", (event, progress) => {
+        mainWindow.setProgressBar(progress)
+    })
 }
 
 // Quand electron est prêt

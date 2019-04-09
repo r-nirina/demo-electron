@@ -44,14 +44,15 @@ export default {
     },
 
     mounted() {
+        this.sendProgressState(0)
         setInterval(() => {
             this.timers = this.timersArray
-            this.sendProgressState()
+            this.updateProgressState()
         }, 100)
     },
 
     methods: {
-        ...mapActions("timer", [ "deleteTimer", "startTimer", "stopTimer", "sendProgressState" ]),
+        ...mapActions("timer", [ "deleteTimer", "startTimer", "stopTimer", "sendProgressState", "updateProgressState" ]),
 
         display(numbers) { return display(numbers) },
 

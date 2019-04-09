@@ -120,7 +120,16 @@ export default {
 			dispatch("electron/sendToMain", message, { root: true })
 		},
 
-		sendProgressState({ getters, dispatch }) {
+		sendProgressState({ dispatch }, _progress) {
+			// Barre de progression native
+			const message = {
+				type: "progress_update",
+				data: _progress
+			}
+			dispatch("electron/sendToMain", message, { root: true })
+		},
+
+		updateProgressState({ getters, dispatch }) {
 			const allProgress = getters.timersArray
 				.map(timer => {
 					const ratio = timer.current / timer.initial
@@ -132,12 +141,7 @@ export default {
 				? allProgress.reduce((acc, x) => acc + x, 0) / allProgress.length
 				: -1
 			
-			// Barre de progression native
-			const message = {
-				type: "progress_update",
-				data: averageProgress
-			}
-			dispatch("electron/sendToMain", message, { root: true })
+			dispatch("sendProgressState", averageProgress)
 		}
 	}
 }

@@ -50,7 +50,12 @@ export default {
 
         submitCreateTimer() {
             const { hour, minute, second } = this
-            this.createTimer({ hour, minute, second })
+            const timer = {
+                hour: parseInt(hour) || 0,
+                minute: parseInt(minute) || 0,
+                second: parseInt(second) || 0
+            }
+            this.createTimer(timer)
             this.hideAddTimerInputs()
         }
     }
@@ -97,11 +102,12 @@ export default {
             transition: background-color 120ms linear;
             color: #ffffff;
             text-align: center;
-            font-size: 24px;
+            font-size: 28px;
             font-family: 'Major Mono Display', 'Courier New';
 
             &::placeholder {
                 font-family: 'Ubuntu';
+                font-size: 24px;
             }
 
             &:hover,
@@ -133,7 +139,7 @@ export default {
             }
             &.cancel:hover,
             &.cancel:focus {
-                color: #bb1616;
+                color: #e64646;
                 background-color: #383838;
             }
         }

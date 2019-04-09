@@ -1,5 +1,10 @@
 const electron = require("electron")
-const { app, BrowserWindow } = electron
+const {
+    app,
+    BrowserWindow,
+    ipcMain,
+    Notification
+} = electron
 
 let mainWindow = null
 
@@ -30,11 +35,24 @@ const createMainWindow = () => {
     })
 }
 
-// When electron is ready
+const listenToRendererProcesses = () => {
+
+    // Notification des minuteurs
+    ipcMain.on("timer_finished", (event, timer) => {
+        new Notification({
+            title: "Temps écoulé",
+            body: "Le timer " + timer.id + " est arrivé au bout du décompte"
+        }).show()
+    })
+}
+
+// Quand electron est prêt
 app.on("ready", () => {
     createMainWindow()
+    listenToRendererProcesses()
 
     if (process.env.NODE_ENV !== "production") {
+        app.setAppUserModelId("com.squirrel.lyon1.mif13.electron")
         require("vue-devtools").install()
         mainWindow.webContents.openDevTools()
     }

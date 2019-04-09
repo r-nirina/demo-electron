@@ -9,7 +9,7 @@
     "start": "electron .",
     "debug": "electron . --inspect=5858",
     "webpack": "webpack",
-    "watchpack": "webpack --watch"
+    "watch": "webpack --watch"
   },
   "keywords": [
     "electron",

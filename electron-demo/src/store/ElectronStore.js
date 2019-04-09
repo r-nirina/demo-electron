@@ -1,4 +1,4 @@
-import { remote } from "electron"
+import { remote, ipcRenderer } from "electron"
 
 const getInitialState = () => ({})
 
@@ -22,6 +22,10 @@ export default {
 
 		restoreWindow() {
 			remote.getCurrentWindow().restore()
+		},
+
+		sendToMain(context, message) {
+			ipcRenderer.send(message.type, message.data)
 		}
 	}
 }

@@ -3,10 +3,10 @@
     <div class="window-control window-control-minimize" @click="minimizeWindow">
         <FontAwesomeIcon icon="window-minimize" />
     </div>
-    <div class="window-control window-control-restore" @click="restoreWindow">
+    <div v-if="isMaximized" class="window-control window-control-restore" @click="restoreWindow">
         <FontAwesomeIcon icon="window-restore" />
     </div>
-    <div class="window-control window-control-maximize" @click="maximizeWindow">
+    <div v-else class="window-control window-control-maximize" @click="maximizeWindow">
         <FontAwesomeIcon icon="window-maximize" />
     </div>
     <div class="window-control window-control-close" @click="closeWindow">
@@ -30,7 +30,7 @@ library.add(faWindowMinimize)
 library.add(faWindowRestore)
 library.add(faWindowClose)
 
-import { mapActions } from "vuex"
+import { mapActions, mapState } from "vuex"
 
 export default {
     name: "WindowControls",
@@ -38,13 +38,24 @@ export default {
         FontAwesomeIcon
     },
 
+    computed: {
+        ...mapState("electron", [ "isMaximized" ])
+    },
+
+    mounted() {
+        setInterval(() => {
+            this.updateWindowState()
+        }, 10)
+    },
+
     methods: {
-        ...mapActions({
-            "closeWindow": "electron/closeWindow",
-            "minimizeWindow": "electron/minimizeWindow",
-            "maximizeWindow": "electron/maximizeWindow",
-            "restoreWindow": "electron/restoreWindow",
-        })
+        ...mapActions("electron", [
+            "closeWindow",
+            "minimizeWindow",
+            "maximizeWindow",
+            "restoreWindow",
+            "updateWindowState"
+        ])
     }
 }
 </script>

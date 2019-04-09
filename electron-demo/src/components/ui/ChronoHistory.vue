@@ -1,6 +1,10 @@
 <template>
 <div class="chrono-history">
-    <div class="round" v-for="(round, index) in rounds" :key="index">
+    <div
+        class="round"
+        v-for="(round, index) in rounds"
+        :key="index"
+    >
         <div>{{ display(round.hour) }}</div>
         <div>:</div>
         <div>{{ display(round.minute) }}</div>

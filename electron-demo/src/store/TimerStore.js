@@ -124,7 +124,8 @@ export default {
 			const allProgress = getters.timersArray
 				.map(timer => {
 					const ratio = timer.current / timer.initial
-					return (ratio < 1) ? ratio : -1
+					const isPaused = timer.intervalID === null
+					return (ratio < 1) ? isPaused ? 2 : ratio : -1
 				})
 				.filter(progress => progress > 0)
 			const averageProgress = (allProgress.length > 0)

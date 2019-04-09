@@ -73,9 +73,13 @@ export default {
 		...mapGetters("chrono", [ "isRunning" ])
 	},
 
+	mounted() {
+		this.listenToShortcuts()
+	},
+
 	methods: {
 		...mapMutations("chrono", [ "snapRound" ]),
-		...mapActions("chrono", [ "start", "stop", "reset" ]),
+		...mapActions("chrono", [ "start", "stop", "reset", "listenToShortcuts" ]),
 		display(numbers) { return display(numbers) }
 	}
 }

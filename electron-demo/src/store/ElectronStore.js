@@ -38,6 +38,15 @@ export default {
 
 		sendToMain(context, message) {
 			ipcRenderer.send(message.type, message.data)
+		},
+
+		listenToShortcuts({ dispatch, commit }) {
+			ipcRenderer.on("toggle_chrono", (event) => {
+				dispatch("chrono/toggleChrono", null, { root: true })
+			})
+			ipcRenderer.on("snap_round", (event) => {
+				commit("chrono/snapRound", null, { root: true })
+			})
 		}
 	}
 }

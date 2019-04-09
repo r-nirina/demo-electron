@@ -4,7 +4,8 @@ const {
     BrowserWindow,
     ipcMain,
     Notification,
-    dialog
+    dialog,
+    globalShortcut
 } = electron
 
 let mainWindow = null
@@ -34,6 +35,7 @@ const createMainWindow = () => {
     mainWindow.on("closed", () => {
         mainWindow = null
     })
+
 }
 
 const listenToRendererProcesses = () => {
@@ -58,10 +60,20 @@ const listenToRendererProcesses = () => {
     })
 }
 
+const initKeyboardShortcuts = () => {
+    globalShortcut.register("CommandOrControl+G", () => {
+        mainWindow.webContents.send("toggle_chrono")
+    })
+    globalShortcut.register("CommandOrControl+U", () => {
+        mainWindow.webContents.send("snap_round")
+    })
+}
+
 // Quand electron est prêt
 app.on("ready", () => {
     createMainWindow()
     listenToRendererProcesses()
+    initKeyboardShortcuts()
 
     if (process.env.NODE_ENV !== "production") {
         app.setAppUserModelId("com.squirrel.lyon1.mif13.electron")

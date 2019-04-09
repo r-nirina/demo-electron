@@ -3,7 +3,8 @@ const {
     app,
     BrowserWindow,
     ipcMain,
-    Notification
+    Notification,
+    dialog
 } = electron
 
 let mainWindow = null
@@ -39,6 +40,12 @@ const listenToRendererProcesses = () => {
 
     // Notification des minuteurs
     ipcMain.on("timer_finished", (event, timer) => {
+        dialog.showMessageBox(mainWindow, {
+            type: "info",
+            title: "Temps écoulé",
+            message: "Le timer " + timer.id + " est arrivé au bout du décompte"
+        })
+
         new Notification({
             title: "Temps écoulé",
             body: "Le timer " + timer.id + " est arrivé au bout du décompte"
@@ -59,6 +66,6 @@ app.on("ready", () => {
     if (process.env.NODE_ENV !== "production") {
         app.setAppUserModelId("com.squirrel.lyon1.mif13.electron")
         require("vue-devtools").install()
-        mainWindow.webContents.openDevTools()
+        // mainWindow.webContents.openDevTools()
     }
 })
